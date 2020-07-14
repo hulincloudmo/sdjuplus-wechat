@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/course/index",
+    "pages/my/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "电机校园",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-popup": "@vant/weapp/popup/index"
+  },
+  "tabBar": {
+    "backgroundColor":"#FFFFFF",
+    "borderStyle":"black",
+    "selectedColor":"#FD6801",
+    "color":"#B1B1B1",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icons/tab-bar/index_off.png",
+        "selectedIconPath": "images/icons/tab-bar/index_on.png"
+      },
+      {
+        "pagePath": "pages/course/index",
+        "text": "课表",
+        "iconPath": "images/icons/tab-bar/schedule_off.png",
+        "selectedIconPath": "images/icons/tab-bar/schedule_on.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "images/icons/tab-bar/my_off.png",
+        "selectedIconPath": "images/icons/tab-bar/my_on.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

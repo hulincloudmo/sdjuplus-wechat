@@ -1,0 +1,46 @@
+<wxs src="../../core/wxs/time.wxs" module="t"></wxs>
+
+
+<view class="bg-gradual-blue" style="height: {{statusBar.height}}rpx">
+
+</view>
+<view class="nav-bar d-flex bg-gradual-blue a-center j-center" bindtap="showPanel">
+    <text class="text-white mr-1">第{{week}}周</text>
+    <van-icon name="{{statusBar.icon}}" />
+</view>
+
+<van-row custom-class="">
+    <van-col span="2" custom-class="bg-blue light">
+        <view class="d-flex flex-column a-center font-weight" style="min-height: 100rpx;">
+            <text>{{t.getNowMonth()}}</text>
+            <text>月</text>
+        </view>
+        <view class="d-flex flex-column a-center j-center" style="min-height: 120rpx" wx:for="{{12}}">
+            <text class="font-weight">{{item + 1}}</text>
+            <text class="font-ssm">{{t.getCourseStartTime(item + 1)}}</text>
+            <text class="font-ssm">{{t.getCourseEndTime(item + 1)}}</text>
+
+        </view>
+    </van-col>
+    <van-col span="22" custom-class="weeks bg-blue light a-center j-center">
+        <view class="d-flex flex-column flex-1 g text-center" style="min-height: 100rpx" wx:for="{{weekList}}" wx:key="index">
+            <text class="font-weight">周{{item}}</text>
+            <text class="font-sm">{{t.getDateWithI(index)}}</text>
+        </view>
+    </van-col>
+
+    <van-col span="22" custom-class="course">
+        <time-table />
+    </van-col>
+
+</van-row>
+
+<van-popup show="{{showPanel}}"
+           position="bottom"
+           custom-style="height:40%"
+           closeable
+           round
+           bind:close="closePanel"
+>
+
+</van-popup>

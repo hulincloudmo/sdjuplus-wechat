@@ -1,0 +1,14 @@
+var time = require('./time.wxs');
+var colorList = ['#39b54a', '#f37b1d', '#0081ff', '#e54d42', '#1cbbb4', '#e03997', '#9000ff', '#9c26b0', '#e03997', '#39b54a']
+function getTodayCourse (courseList) {
+
+}
+
+function getRandomColor () {
+  return colorList[Math.floor(Math.random()*10)]
+}
+
+module.exports = {
+  getTodayCourse: getTodayCourse,
+  getRandomColor: getRandomColor
+};

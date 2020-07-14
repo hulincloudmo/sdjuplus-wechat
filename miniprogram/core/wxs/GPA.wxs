@@ -1,0 +1,7 @@
+function getGPA(CourseList) {
+
+}
+
+module.exports = {
+    getGPA: getGPA
+}

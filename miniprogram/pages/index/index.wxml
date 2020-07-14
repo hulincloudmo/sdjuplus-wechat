@@ -1,0 +1,44 @@
+<wxs src="../../core/wxs/time.wxs" module="t"></wxs>
+
+<van-image width="100%" custom-class="bannerImg" height="400rpx" src="/images/banner.jpg"></van-image>
+
+<view class="course-main p-2 d-flex flex-column">
+    <view class="mb-1">
+        <text class="font-md font-weight" style="color: #666666">第一周·周{{t.getWeek()}}</text>
+        <text class="ml-2">{{t.getNowMonth()}}月{{t.getNowDay()}}日</text>
+    </view>
+    <view style="align-self: center" wx:if="{{userCourseList.length === 0}}">
+        <text class="">今天没有课，享受生活吧！</text>
+    </view>
+    <view wx:else class="ml-2 mt-2">
+        <van-row custom-class="mb-2" wx:for="{{userCourseList}}">
+            <van-col span="6" custom-class="course-num">
+                <text class="course-node">{{item.node}}</text>
+            </van-col>
+            <van-col span="18" custom-class="course-detail">
+                <view class="mb-2" style="font-size: 35rpx;font-weight: 500">
+                    {{item.name}}
+                </view>
+                <view>
+                    <van-image width="30rpx" height="30rpx" src="/images/icons/classroom.png"></van-image>
+                    <text class="ml-1 mr-2">{{item.location}}</text>
+                    <van-image width="30rpx" height="30rpx" src="/images/icons/time.png"></van-image>
+                    <text class="ml-1">{{t.getCourseTimeWithNode(item.node)}}</text>
+                </view>
+            </van-col>
+        </van-row>
+    </view>
+</view>
+
+<view class="container">
+    <van-transition show="{{ showMain }}" name="slide-up" class="main">
+        <view class="mx-3">
+            <van-grid column-num="3" custom-class="grid" square border="{{false}}" clickable>
+                <van-grid-item wx:for="{{grid}}" wx:key="index" icon="{{item.icon}}" text="{{item.title}}" link-type="navigateTo" url="{{item.url}}" />
+            </van-grid>
+        </view>
+    </van-transition>
+</view>
+
+<van-notify id="van-notify" />
+

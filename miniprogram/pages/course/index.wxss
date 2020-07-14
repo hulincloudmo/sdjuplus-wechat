@@ -1,0 +1,12 @@
+/* miniprogram/pages/course/index.wxss */
+.nav-bar {
+    height: 110rpx;
+}
+.weeks {
+    display: flex;
+    min-height: 100rpx;
+}
+
+.course {
+    min-height: 100%;
+}

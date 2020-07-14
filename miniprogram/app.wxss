@@ -1,0 +1,29 @@
+@import "./core/animation.wxss";
+@import "./core/ty-main.wxss"; /**app.wxss**/
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+page {
+  background-color: #f5f5f5;
+  min-height: 100%;
+}
+
+.bg-gradual-blue {
+  background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
+  color: #ffffff;
+}
+
+.bg-blue {
+  background-color: #0081ff;
+  color: #ffffff;
+}
+
+.bg-blue.light {
+  color: #0081ff;
+  background-color: #cce6ff;
+}

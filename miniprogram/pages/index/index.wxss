@@ -1,0 +1,36 @@
+/**index.wxss**/
+.main {
+  width: 100%;
+  padding: 20rpx;
+}
+
+.bannerImg {
+  z-index: -999;
+}
+
+.course-main {
+  background-color: white;
+  width: 624rpx;
+  margin: -80rpx auto 0rpx auto;
+  border-radius: 50rpx;
+  min-height: 200rpx;
+  z-index: 100;
+}
+
+.grid {
+  border-radius: 50rpx;
+}
+.course-num {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-node {
+  font-weight: bold;
+  font-size: 40rpx;
+}
+
+.course-detail {
+  display: flex;
+  flex-direction: column;
+}
