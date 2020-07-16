@@ -1,11 +1,13 @@
 <wxs src="../../../core/wxs/course.wxs" module="c"></wxs>
 
-<view class="d-flex">
-    <view class="d-flex flex-1" wx:for="{{7}}" wx:for-item="x" wx:key="index">
-        <view class="d-flex flex-1 flex-column a-center j-center">
-            <view class="d-flex a-center j-center" style="min-height: 120rpx;width: 100%;" wx:for="{{12}}" wx:for-item="y">
-                <text>{{x + 1}}-{{y + 1}}</text>
+<scroll-view scroll-y enable-flex>
+    <view class="d-flex">
+        <view class="d-flex flex-1" wx:for="{{7}}" wx:for-item="x" wx:key="index">
+            <view class="d-flex flex-1 flex-column a-center j-center">
+                <view class="d-flex a-center j-center" style="min-height: 120rpx;width: 100%;" wx:for="{{12}}" wx:for-item="y">
+                    <text>{{x + 1}}-{{y + 1}}</text>
+                </view>
             </view>
         </view>
     </view>
-</view>
+</scroll-view>

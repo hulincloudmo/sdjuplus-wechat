@@ -1,12 +1,20 @@
 /* miniprogram/pages/course/index.wxss */
-.nav-bar {
-    height: 110rpx;
+
+.setting {
+    align-self: flex-start
 }
+
 .weeks {
     display: flex;
     min-height: 100rpx;
+    box-shadow: 0rpx 3rpx 5rpx #888888
 }
 
 .course {
     min-height: 100%;
+}
+
+.lesson-list {
+    position: relative;
+    overflow: hidden;
 }
