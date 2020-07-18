@@ -1,9 +1,14 @@
 <wxs src="../../core/wxs/time.wxs" module="t"></wxs>
 
+
+
 <van-sticky>
-    <view class="d-flex bg-gradual-blue a-center j-center pb-1" style="height: 174rpx;padding-top: {{statusBar.height}}rpx" bindtap="showPanel">
-        <text class="text-white mr-1">第{{week}}周</text>
-        <van-icon name="{{statusBar.icon}}"/>
+    <view class="d-flex bg-gradual-blue a-center j-center pb-1 position-relative" style="height: 174rpx;padding-top: {{statusBar.height}}rpx">
+        <van-icon name="setting-o" size="20" custom-class="setting"></van-icon>
+        <view bindtap="showPanel">
+            <text class="text-white mr-1">第{{week}}周</text>
+            <van-icon name="{{statusBar.icon}}"/>
+        </view>
     </view>
 
     <van-col span="24" custom-class="weeks bg-blue light a-center j-center">
@@ -40,10 +45,25 @@
 
 <van-popup show="{{showPanel}}"
            position="bottom"
+           custom-class="panel"
            custom-style="height:40%"
            closeable
            round
            bind:close="closePanel"
 >
-
+<van-row>
+    <van-col span="6" wx:for="{{19}}">
+        <van-button type="{{item === week ? 'info' : ''}}"
+                    custom-class="mr-2 mb-2 week-button"
+                    data-week="{{item}}"
+                    wx:if="{{item !== 0}}"
+                    bindtap="changeWeek"
+        >
+            <text wx:if="{{item !== week}}" class="text-blue">第{{item}}周</text>
+            <text wx:else class="text-white">第{{item}}周
+                (本周)
+            </text>
+        </van-button>
+    </van-col>
+</van-row>
 </van-popup>

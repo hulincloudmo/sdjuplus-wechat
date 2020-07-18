@@ -1,13 +1,22 @@
 /* miniprogram/pages/course/index.wxss */
 
 .setting {
-    align-self: flex-start
+    position: absolute;
+    right: 276rpx;
+    z-index: 9999;
 }
 
 .weeks {
     display: flex;
     min-height: 100rpx;
-    box-shadow: 0rpx 3rpx 5rpx #888888
+    box-shadow: 0rpx 3rpx 5rpx #888888;
+    border: 0rpx;
+}
+
+.week-button {
+    width: 173rpx;
+    box-shadow: 0rpx 3rpx 5rpx #888888;
+    background-color: white;
 }
 
 .course {
@@ -17,4 +26,9 @@
 .lesson-list {
     position: relative;
     overflow: hidden;
+}
+
+.panel {
+    padding: 140rpx 0rpx 0 0rpx;
+
 }

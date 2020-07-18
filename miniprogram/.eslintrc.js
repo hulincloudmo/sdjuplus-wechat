@@ -51,10 +51,7 @@ module.exports = {
       'single' // backtick、double、single
     ],
     // 要求或禁止使用分号代替 ASI
-    'semi': [
-      'error',
-      'always'
-    ],
+    'semi': 0,
     'no-console': [
       'off', {
         'allow': ['log', 'warn', 'error', 'info'] // "allow" 是个字符串数组，包含允许使用的console 对象的方法

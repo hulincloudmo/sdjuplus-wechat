@@ -37,6 +37,12 @@ Page({
   },
 
   onLoad: function () {
+
+  },
+
+  onReady () {
+
+
   },
 
   onShow () {

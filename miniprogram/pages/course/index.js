@@ -1,12 +1,13 @@
 // miniprogram/pages/course/index.js
-import { weekList } from '../../config/index';
+import {weekList} from '../../config/index';
 import {px2rpx} from '../../core/utils/common';
+
 const app = getApp();
 Page({
 
   /**
-       * 页面的初始数据
-       */
+     * 页面的初始数据
+     */
   data: {
     week: 1,
     statusBar: {
@@ -18,8 +19,8 @@ Page({
   },
 
   /**
-       * 生命周期函数--监听页面加载
-       */
+     * 生命周期函数--监听页面加载
+     */
   onLoad: function (options) {
     this.init();
   },
@@ -32,7 +33,7 @@ Page({
     });
   },
 
-  async getStatusBarHeight() {
+  async getStatusBarHeight () {
     const systemInfo = await wx.getSystemInfo();
     return px2rpx(systemInfo.statusBarHeight);
   },
@@ -44,6 +45,12 @@ Page({
   closePanel () {
     this.setData({
       showPanel: false
+    });
+  },
+  changeWeek (event) {
+    const week = event.target.dataset.week;
+    this.setData({
+      week: week
     });
   }
 }
