@@ -1,5 +1,5 @@
 // miniprogram/pages/course/index.js
-import {weekList} from '../../config/index';
+import {weekList, workList} from '../../config/index';
 import {px2rpx} from '../../core/utils/common';
 
 const app = getApp();
@@ -14,8 +14,12 @@ Page({
       height: 0,
       icon: 'arrow-down'
     },
-    showPanel: false,
-    weekList: weekList
+    setting: {
+      showWeekend: true
+    },
+    showSwitchWeek: false,
+    showSetting: false,
+    weekSelected: weekList
   },
 
   /**
@@ -37,14 +41,23 @@ Page({
     const systemInfo = await wx.getSystemInfo();
     return px2rpx(systemInfo.statusBarHeight);
   },
-  showPanel () {
-    this.setData({
-      showPanel: true
-    });
+  showPanel (event) {
+    const clickModel = event.currentTarget.dataset.showmodel
+    switch (clickModel) {
+    case 'switchWeek':
+      this.setData({
+        showSwitchWeek: true
+      }); break;
+    case 'setting':
+      this.setData({
+        showSetting: true
+      });
+    }
   },
   closePanel () {
     this.setData({
-      showPanel: false
+      showSwitchWeek: false,
+      showSetting: false
     });
   },
   changeWeek (event) {
@@ -52,6 +65,14 @@ Page({
     this.setData({
       week: week
     });
+  },
+  onChangeWeekendShow ({detail}) {
+    const newSetting = {...this.data.setting}
+    newSetting.showWeekend = detail
+    this.setData({
+      setting: newSetting,
+      weekSelected: detail ? weekList : workList
+    })
   }
 }
 );

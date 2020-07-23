@@ -1,18 +1,13 @@
-// components/course/timetable/index.js
+// components/my/wave/index.js
 Component({
   options: {
     addGlobalClass: true
   },
-
   /**
    * 组件的属性列表
    */
   properties: {
-    courseList: Array,
-    week: {
-      type: Number,
-      default: 7
-    }
+
   },
 
   /**
@@ -28,4 +23,4 @@ Component({
   methods: {
 
   }
-});
+})

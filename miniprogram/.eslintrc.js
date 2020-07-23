@@ -27,6 +27,7 @@ module.exports = {
     'Behavior': true,
     'wx': true,
     'getApp': true,
+    'setData': true,
     'getCurrentPages': true
   },
 

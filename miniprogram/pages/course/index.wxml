@@ -1,11 +1,9 @@
 <wxs src="../../core/wxs/time.wxs" module="t"></wxs>
 
-
-
 <van-sticky>
     <view class="d-flex bg-gradual-blue a-center j-center pb-1 position-relative" style="height: 174rpx;padding-top: {{statusBar.height}}rpx">
-        <van-icon name="setting-o" size="20" custom-class="setting"></van-icon>
-        <view bindtap="showPanel">
+        <van-icon name="setting-o" size="20" data-showmodel="setting" bindtap="showPanel" custom-class="setting"></van-icon>
+        <view bindtap="showPanel" data-showmodel="switchWeek">
             <text class="text-white mr-1">第{{week}}周</text>
             <van-icon name="{{statusBar.icon}}"/>
         </view>
@@ -17,7 +15,7 @@
             <text>月</text>
         </view>
 
-        <view class="d-flex flex-column flex-1 g text-center" style="min-height: 100rpx" wx:for="{{weekList}}"
+        <view class="d-flex flex-column flex-1 g text-center" style="min-height: 100rpx" wx:for="{{weekSelected}}"
               wx:key="index">
             <text class="font-weight">周{{item}}</text>
             <text class="font-sm">{{t.getDateWithI(index)}}</text>
@@ -27,7 +25,9 @@
 
 <scroll-view scroll-y enable-flex>
     <van-row custom-class="lesson-list">
-        <view style="height: 100rpx;"></view>
+        <view class="d-flex a-center j-center" style="height: 100rpx;">
+            <van-loading size="40px">加载中...</van-loading>
+        </view>
         <van-col span="2" custom-class="bg-blue light">
             <view class="d-flex flex-column a-center j-center" style="min-height: 120rpx" wx:for="{{12}}">
                 <text class="font-weight">{{item + 1}}</text>
@@ -37,14 +37,14 @@
         </van-col>
 
         <van-col span="22" custom-class="course">
-            <time-table/>
+            <time-table week="{{weekSelected.length}}"/>
         </van-col>
 
     </van-row>
 </scroll-view>
 
-<van-popup show="{{showPanel}}"
-           position="bottom"
+<van-popup show="{{showSwitchWeek}}"
+           position="top"
            custom-class="panel"
            custom-style="height:40%"
            closeable
@@ -66,4 +66,15 @@
         </van-button>
     </van-col>
 </van-row>
+</van-popup>
+
+<van-popup show="{{showSetting}}"
+           position="left"
+           round
+           bind:close="closePanel"
+           custom-style="width:40%"
+>
+<van-cell title="显示周末">
+    <van-switch size="20px" checked="{{setting.showWeekend}}" bind:change="onChangeWeekendShow" />
+</van-cell>
 </van-popup>
