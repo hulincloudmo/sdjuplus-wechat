@@ -1,4 +1,6 @@
 // index.js
+import {randomColor} from '../../core/utils/common';
+
 const app = getApp();
 import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify.js';
 
@@ -41,12 +43,19 @@ Page({
   },
 
   onReady () {
-
-
+    this.initCourseList()
   },
 
   onShow () {
     this.showTransition();
+  },
+
+  initCourseList () {
+    const courseList = app.globalData.userCourseList
+    for (let i = 0; i < courseList.length; i++) {
+      courseList[i].color = randomColor()
+    }
+    app.globalData.userCourseList = courseList
   },
 
   showTransition () {

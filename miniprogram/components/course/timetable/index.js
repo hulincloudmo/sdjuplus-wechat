@@ -1,4 +1,7 @@
 // components/course/timetable/index.js
+import {Judger} from '../../module/judger';
+
+const app = getApp()
 Component({
   options: {
     addGlobalClass: true
@@ -8,7 +11,6 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    courseList: Array,
     week: {
       type: Number,
       default: 7
@@ -19,7 +21,27 @@ Component({
    * 组件的初始数据
    */
   data: {
+    courseList: [],
+    judger: {}
+  },
 
+  lifetimes: {
+    ready () {
+      const judger = new Judger()
+      this.setData({
+        judger
+      })
+    }
+  },
+
+  pageLifetimes: {
+    show: function () {
+      const courseList = app.globalData.userCourseList
+      this.setData({
+        courseList
+      }
+      )
+    }
   },
 
   /**

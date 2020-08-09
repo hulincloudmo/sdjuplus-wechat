@@ -1,0 +1,13 @@
+<view wx:if="{{!lesson.has}}" class="null">
+<!--    {{x}}-{{y}}-->
+</view>
+<view wx:else style="height: 100%">
+    <view wx:if="{{ lesson.isStart }}" class="startNode" style="background-color: {{ lesson.data.color }};">
+        <text style="position: absolute; top: 5rpx;left: 10rpx">{{ lesson.data.name }}</text>
+        <text style="position: absolute; top: 88rpx;left: 10rpx">{{ lesson.data.location }}</text>
+<!--        <text style="position: absolute; bottom: -100rpx">{{ lesson.data.teacher }}</text>-->
+    </view>
+    <view wx:else class="endNode" style="background-color: {{ lesson.data.color }};">
+
+    </view>
+</view>

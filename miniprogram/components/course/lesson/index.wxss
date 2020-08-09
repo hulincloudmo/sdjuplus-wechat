@@ -1,0 +1,22 @@
+:host {
+    width: 100%;
+    height: 120rpx;
+}
+.null {
+    border-radius: 10rpx;
+    background-color: white;
+    height: 95%;
+}
+.startNode {
+    height: 100%;
+    position: relative;
+    border-radius: 10rpx 10rpx 0 0;
+    padding: 10rpx;
+    color: white;
+    font-size: 25rpx;
+}
+.endNode {
+    height: 100%;
+    border-radius: 0rpx 0rpx 10rpx 10rpx;
+    box-sizing: border-box;
+}

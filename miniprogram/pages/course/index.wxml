@@ -37,7 +37,7 @@
         </van-col>
 
         <van-col span="22" custom-class="course">
-            <time-table week="{{weekSelected.length}}"/>
+            <time-table week="{{weekSelected.length + 1}}"/>
         </van-col>
 
     </van-row>
