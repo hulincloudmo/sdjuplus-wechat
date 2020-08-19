@@ -27,6 +27,11 @@ class Judger {
       data: null
     }
   }
+  
+  static hasCourseInThisWeek() {
+    
+  }
+  
 }
 
 export {

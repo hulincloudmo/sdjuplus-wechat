@@ -1,4 +1,5 @@
 <wxs src="../../core/wxs/time.wxs" module="t"></wxs>
+<wxs src="../../core/wxs/course.wxs" module="c"></wxs>
 
 <van-image width="100%" custom-class="bannerImg" height="400rpx" src="/images/banner.jpg"></van-image>
 
@@ -7,13 +8,13 @@
         <text class="font-md font-weight" style="color: #666666">第一周·周{{t.getWeek()}}</text>
         <text class="ml-2">{{t.getNowMonth()}}月{{t.getNowDay()}}日</text>
     </view>
-    <view style="align-self: center" wx:if="{{userCourseList.length === 0}}">
+    <view style="align-self: center" wx:if="{{c.todayCourseFilter(userCourseList).length === 0}}">
         <text class="">今天没有课，享受生活吧！</text>
     </view>
     <view wx:else class="ml-2 mt-2">
-        <van-row custom-class="mb-2" wx:for="{{userCourseList}}">
+        <van-row custom-class="mb-2" wx:for="{{c.todayCourseFilter(userCourseList)}}">
             <van-col span="6" custom-class="course-num">
-                <text class="course-node">{{item.node}}</text>
+                <text class="course-node">{{c.transformCourseNode(item.node)}}</text>
             </van-col>
             <van-col span="18" custom-class="course-detail">
                 <view class="mb-2" style="font-size: 35rpx;font-weight: 500">
@@ -23,7 +24,7 @@
                     <van-image width="30rpx" height="30rpx" src="/images/icons/classroom.png"></van-image>
                     <text class="ml-1 mr-2">{{item.location}}</text>
                     <van-image width="30rpx" height="30rpx" src="/images/icons/time.png"></van-image>
-                    <text class="ml-1">{{t.getCourseTimeWithNode(item.node)}}</text>
+                    <text class="ml-1">{{t.getCourseTimeWithNode(c.transformCourseNode(item.node))}}</text>
                 </view>
             </van-col>
         </van-row>

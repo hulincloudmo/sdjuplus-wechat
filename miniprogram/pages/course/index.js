@@ -1,6 +1,7 @@
 // miniprogram/pages/course/index.js
 import {weekList, workList} from '../../config/index';
 import {px2rpx} from '../../core/utils/common';
+import {UserConfig} from '../../config/userConfig'
 
 const app = getApp();
 Page({
@@ -27,6 +28,8 @@ Page({
      */
   onLoad: function (options) {
     this.init();
+    const config = new UserConfig()
+    console.log(config)
   },
 
   async init () {

@@ -1,5 +1,6 @@
 // components/course/timetable/index.js
 import {Judger} from '../../module/judger';
+import {Course} from '../../../module/course'
 
 const app = getApp()
 Component({
@@ -36,11 +37,11 @@ Component({
 
   pageLifetimes: {
     show: function () {
-      const courseList = app.globalData.userCourseList
+      let course = new Course()
+      course.initCourseColor()
       this.setData({
-        courseList
-      }
-      )
+        courseList: course.getData()
+      })
     }
   },
 

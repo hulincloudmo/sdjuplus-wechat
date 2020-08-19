@@ -3,6 +3,7 @@ import {randomColor} from '../../core/utils/common';
 
 const app = getApp();
 import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify.js';
+import {Course} from '../../module/course'
 
 Page({
   data: {
@@ -24,18 +25,7 @@ Page({
       }
     ],
     showMain: false,
-    userCourseList: [
-      {
-        node: '1-2',
-        name: '计算机网络',
-        location: 'A教201'
-      },
-      {
-        node: '3-4',
-        name: '数据结构',
-        location: 'A教202'
-      }
-    ]
+    userCourseList: []
   },
 
   onLoad: function () {
@@ -46,16 +36,15 @@ Page({
     this.initCourseList()
   },
 
-  onShow () {
-    this.showTransition();
+  initCourseList () {
+    const course = new Course()
+    this.setData({
+      userCourseList: course.getData()
+    })
   },
 
-  initCourseList () {
-    const courseList = app.globalData.userCourseList
-    for (let i = 0; i < courseList.length; i++) {
-      courseList[i].color = randomColor()
-    }
-    app.globalData.userCourseList = courseList
+  onShow () {
+    this.showTransition();
   },
 
   showTransition () {
