@@ -2,8 +2,10 @@
 import {weekList, workList} from '../../config/index';
 import {px2rpx} from '../../core/utils/common';
 import {UserConfig} from '../../config/userConfig'
+import {Course} from '../../module/course'
 
 const app = getApp();
+const course = new Course()
 Page({
 
   /**
@@ -18,6 +20,7 @@ Page({
     setting: {
       showWeekend: true
     },
+    courseList: [],
     showSwitchWeek: false,
     showSetting: false,
     weekSelected: weekList
@@ -30,6 +33,14 @@ Page({
     this.init();
     const config = new UserConfig()
     console.log(config)
+  },
+
+  onShow () {
+    const courseList = course.getData()
+    console.log(courseList)
+    this.setData({
+      courseList
+    })
   },
 
   async init () {
@@ -76,6 +87,9 @@ Page({
       setting: newSetting,
       weekSelected: detail ? weekList : workList
     })
+  },
+  refreshCourse () {
+    course.freshenCourse(1002, true)
   }
 }
 );

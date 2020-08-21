@@ -17,6 +17,5 @@
 }
 .endNode {
     height: 100%;
-    border-radius: 0rpx 0rpx 10rpx 10rpx;
     box-sizing: border-box;
 }

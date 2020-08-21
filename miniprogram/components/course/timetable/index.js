@@ -15,6 +15,9 @@ Component({
     week: {
       type: Number,
       default: 7
+    },
+    courseList: {
+      type: Array
     }
   },
 
@@ -22,33 +25,11 @@ Component({
    * 组件的初始数据
    */
   data: {
-    courseList: [],
-    judger: {}
-  },
-
-  lifetimes: {
-    ready () {
-      const judger = new Judger()
-      this.setData({
-        judger
-      })
-    }
-  },
-
-  pageLifetimes: {
-    show: function () {
-      let course = new Course()
-      course.initCourseColor()
-      this.setData({
-        courseList: course.getData()
-      })
-    }
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
   }
 });

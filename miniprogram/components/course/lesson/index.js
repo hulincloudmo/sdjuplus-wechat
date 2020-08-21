@@ -24,20 +24,23 @@ Component({
     }
   },
 
+  observers: {
+    'courseList': function () {
+      this.getLesson()
+    }
+  },
+
   /**
    * 组件的初始数据
    */
   data: {
-    lesson: null
+    lesson: null,
+    nodeLength: 2
   },
 
   lifetimes: {
     ready () {
-      let { x, y, courseList } = this.properties
-      let lesson = Judger.hasLesson(x, y, courseList)
-      this.setData({
-        lesson
-      })
+      this.getLesson()
     }
   },
 
@@ -45,6 +48,25 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    getLesson () {
+      let { x, y, courseList } = this.properties
+      let judger = new Judger()
+      let lesson = judger.hasLesson(x, y, courseList)
+      // console.log(lesson)
+      // if (lesson.data !== null) {
+      //   let [start, end] = lesson.data.node.split('&')
+      //   let startNode = start[start.length - 1]
+      //   let endNode = end[end.length - 1]
+      //   this.setData({
+      //     nodeLength: endNode - startNode
+      //   })
+      // }
+      this.setData({
+        lesson
+      })
+    },
+    showChangePanel () {
 
+    }
   }
 })

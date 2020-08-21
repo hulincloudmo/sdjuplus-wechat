@@ -1,0 +1,5 @@
+<van-row>
+    <view>不喜欢现在的颜色？</view>
+    <van-button bind:tap="onChangeColor">随机生成课程颜色</van-button>
+</van-row>
+<van-notify id="van-notify" />

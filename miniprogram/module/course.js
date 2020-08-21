@@ -10,6 +10,8 @@ import {randomColor} from '../core/utils/common'
 class Course {
   courseList = []
   static instance = null
+  isInitColor = false
+  userId = 1002
 
   constructor () {
     if (Course.instance !== null) {
@@ -20,15 +22,22 @@ class Course {
     }
   }
 
+  get hasData () {
+    return this.courseList.length !== 0
+  }
+
   refreshCourseStorage () {
     wx.setStorageSync('courseList', this.courseList)
   }
 
   initCourseColor () {
     for (let i = 0; i < this.courseList.length; i++) {
-      this.courseList[i].color = randomColor()
+      if (this.courseList[i].color !== null) {
+        this.courseList[i].color = randomColor()
+      }
     }
     this.refreshCourseStorage()
+    this.isInitColor = true
   }
 
   getData () {
@@ -43,16 +52,29 @@ class Course {
     }
   }
 
-  async freshenCourse (userId) {
+  async updateCourseData (userId) {
     const data = await CourseAPI.getUserCourseMsg(userId)
     if (data.data.code === HttpCode.successCode) {
       this.courseList = data.data.userCourseList
+      this.initCourseColor()
       wx.setStorageSync('courseList', this.courseList)
     } else {
       console.error('课程信息请求失败')
     }
   }
 
+  async freshenCourse (userId, force = false) {
+    if (force) {
+      await this.updateCourseData(userId)
+    } else {
+      this.getData()
+      if (this.hasData) {
+        await this.updateCourseData(userId)
+      } else {
+        await this.updateCourseData(userId)
+      }
+    }
+  }
 }
 
 export {

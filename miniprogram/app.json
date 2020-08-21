@@ -4,7 +4,8 @@
     "pages/course/index",
     "pages/my/index",
     "pages/useful-book/index",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/setting-color/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

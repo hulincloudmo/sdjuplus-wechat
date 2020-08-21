@@ -37,7 +37,10 @@
         </van-col>
 
         <van-col span="22" custom-class="course">
-            <time-table week="{{weekSelected.length + 1}}"/>
+            <time-table
+                    week="{{weekSelected.length + 1}}"
+                    courseList="{{courseList}}"
+            />
         </van-col>
 
     </van-row>
@@ -77,4 +80,22 @@
 <van-cell title="显示周末">
     <van-switch size="20px" checked="{{setting.showWeekend}}" bind:change="onChangeWeekendShow" />
 </van-cell>
+<van-cell icon="points"
+          title="修改主题色"
+          center
+          clickable
+          is-link
+          url="/pages/setting-color/index"
+          >
+</van-cell>
+<van-cell
+        icon="points"
+        title="刷新课表数据"
+        center
+        clickable
+        is-link
+        bind:tap="refreshCourse"
+/>
+
+
 </van-popup>

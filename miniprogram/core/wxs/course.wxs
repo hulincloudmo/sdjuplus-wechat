@@ -18,6 +18,10 @@ function transformCourseNode(node) {
   return start + "-" + end
 }
 
+function hasCourseThisWeek(lesson) {
+
+}
+
 module.exports = {
   todayCourseFilter: todayCourseFilter,
   transformCourseNode: transformCourseNode
