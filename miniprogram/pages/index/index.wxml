@@ -9,7 +9,11 @@
         <text class="ml-2">{{t.getNowMonth()}}月{{t.getNowDay()}}日</text>
     </view>
     <view style="align-self: center" wx:if="{{c.todayCourseFilter(userCourseList).length === 0}}">
-        <text class="">今天没有课，享受生活吧！</text>
+        <van-empty
+                class="custom-image"
+                image="https://img.yzcdn.cn/vant/custom-empty-image.png"
+                description="今天没有课，享受生活吧！"
+        />
     </view>
     <view wx:else class="ml-2 mt-2">
         <van-row custom-class="mb-2" wx:for="{{c.todayCourseFilter(userCourseList)}}">

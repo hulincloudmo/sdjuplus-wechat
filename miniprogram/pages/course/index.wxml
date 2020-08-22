@@ -4,7 +4,7 @@
     <view class="d-flex bg-gradual-blue a-center j-center pb-1 position-relative" style="height: 174rpx;padding-top: {{statusBar.height}}rpx">
         <van-icon name="setting-o" size="20" data-showmodel="setting" bindtap="showPanel" custom-class="setting"></van-icon>
         <view bindtap="showPanel" data-showmodel="switchWeek">
-            <text class="text-white mr-1">第{{week}}周</text>
+            <text class="text-white mr-1">第{{thisWeek}}周</text>
             <van-icon name="{{statusBar.icon}}"/>
         </view>
     </view>
@@ -40,6 +40,7 @@
             <time-table
                     week="{{weekSelected.length + 1}}"
                     courseList="{{courseList}}"
+                    thisWeek="{{thisWeek}}"
             />
         </van-col>
 
@@ -56,13 +57,13 @@
 >
 <van-row>
     <van-col span="6" wx:for="{{19}}">
-        <van-button type="{{item === week ? 'info' : ''}}"
+        <van-button type="{{item === thisWeek ? 'info' : ''}}"
                     custom-class="mr-2 mb-2 week-button"
                     data-week="{{item}}"
                     wx:if="{{item !== 0}}"
                     bindtap="changeWeek"
         >
-            <text wx:if="{{item !== week}}" class="text-blue">第{{item}}周</text>
+            <text wx:if="{{item !== thisWeek}}" class="text-blue">第{{item}}周</text>
             <text wx:else class="text-white">第{{item}}周
                 (本周)
             </text>
@@ -90,12 +91,21 @@
 </van-cell>
 <van-cell
         icon="points"
-        title="刷新课表数据"
+        title="课程配置"
         center
         clickable
         is-link
+        url="/pages/setting-course/index"
+/>
+<van-cell
+        icon="points"
+        title="刷新课表数据"
+        center
+        clickable
         bind:tap="refreshCourse"
 />
 
 
 </van-popup>
+
+<van-notify id="van-notify" />

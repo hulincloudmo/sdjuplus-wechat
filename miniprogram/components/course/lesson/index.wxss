@@ -10,7 +10,6 @@
 .startNode {
     height: 100%;
     position: relative;
-    border-radius: 10rpx 10rpx 0 0;
     padding: 10rpx;
     color: white;
     font-size: 25rpx;

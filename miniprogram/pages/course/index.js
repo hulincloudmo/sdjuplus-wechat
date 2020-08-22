@@ -3,6 +3,7 @@ import {weekList, workList} from '../../config/index';
 import {px2rpx} from '../../core/utils/common';
 import {UserConfig} from '../../config/userConfig'
 import {Course} from '../../module/course'
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify.js';
 
 const app = getApp();
 const course = new Course()
@@ -12,7 +13,6 @@ Page({
      * 页面的初始数据
      */
   data: {
-    week: 1,
     statusBar: {
       height: 0,
       icon: 'arrow-down'
@@ -23,6 +23,7 @@ Page({
     courseList: [],
     showSwitchWeek: false,
     showSetting: false,
+    thisWeek: 1,
     weekSelected: weekList
   },
 
@@ -37,9 +38,9 @@ Page({
 
   onShow () {
     const courseList = course.getData()
-    console.log(courseList)
     this.setData({
-      courseList
+      courseList,
+      thisWeek: Course.thisWeek
     })
   },
 
@@ -76,8 +77,9 @@ Page({
   },
   changeWeek (event) {
     const week = event.target.dataset.week;
+    Course.thisWeek = week
     this.setData({
-      week: week
+      thisWeek: week
     });
   },
   onChangeWeekendShow ({detail}) {
@@ -87,6 +89,11 @@ Page({
       setting: newSetting,
       weekSelected: detail ? weekList : workList
     })
+    if (!detail) {
+      Notify({ type: 'success', message: '周末没课，开心啊！', safeAreaInsetTop: true })
+    } else {
+      Notify({ type: 'primary', message: '周末学习，勤奋！', safeAreaInsetTop: true })
+    }
   },
   refreshCourse () {
     course.freshenCourse(1002, true)

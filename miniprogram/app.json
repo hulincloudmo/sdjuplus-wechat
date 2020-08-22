@@ -5,7 +5,8 @@
     "pages/my/index",
     "pages/useful-book/index",
     "pages/login/index",
-    "pages/setting-color/index"
+    "pages/setting-color/index",
+    "pages/setting-course/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -22,6 +23,8 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-transition": "@vant/weapp/transition/index",
     "van-grid": "@vant/weapp/grid/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-empty": "@vant/weapp/empty/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-notify": "@vant/weapp/notify/index",
     "van-switch": "@vant/weapp/switch/index",

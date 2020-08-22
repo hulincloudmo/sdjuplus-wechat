@@ -11,6 +11,7 @@ class Course {
   courseList = []
   static instance = null
   isInitColor = false
+  static thisWeek = 1
   userId = 1002
 
   constructor () {
@@ -30,11 +31,14 @@ class Course {
     wx.setStorageSync('courseList', this.courseList)
   }
 
+  setCourseList (courseList) {
+    this.courseList = courseList
+    this.refreshCourseStorage()
+  }
+
   initCourseColor () {
     for (let i = 0; i < this.courseList.length; i++) {
-      if (this.courseList[i].color !== null) {
-        this.courseList[i].color = randomColor()
-      }
+      this.courseList[i].color = randomColor()
     }
     this.refreshCourseStorage()
     this.isInitColor = true
@@ -50,6 +54,10 @@ class Course {
         return courseList
       }
     }
+  }
+
+  getWeek (node) {
+    return node.split('&').charAt(0)
   }
 
   async updateCourseData (userId) {
@@ -68,9 +76,7 @@ class Course {
       await this.updateCourseData(userId)
     } else {
       this.getData()
-      if (this.hasData) {
-        await this.updateCourseData(userId)
-      } else {
+      if (!this.hasData) {
         await this.updateCourseData(userId)
       }
     }

@@ -15,7 +15,12 @@
                       wx:if="{{y}}"
                       wx:for-item="y"
                 >
-                    <lesson x="{{x}}" y="{{y}}" courseList="{{courseList}}"></lesson>
+                    <lesson
+                            x="{{x}}"
+                            y="{{y}}"
+                            courseList="{{courseList}}"
+                            thisWeek="{{thisWeek}}"
+                    ></lesson>
                 </view>
             </view>
         </view>

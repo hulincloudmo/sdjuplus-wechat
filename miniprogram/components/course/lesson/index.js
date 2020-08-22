@@ -21,6 +21,9 @@ Component({
     },
     courseList: {
       type: Array
+    },
+    thisWeek: {
+      type: Number
     }
   },
 
@@ -52,15 +55,7 @@ Component({
       let { x, y, courseList } = this.properties
       let judger = new Judger()
       let lesson = judger.hasLesson(x, y, courseList)
-      // console.log(lesson)
-      // if (lesson.data !== null) {
-      //   let [start, end] = lesson.data.node.split('&')
-      //   let startNode = start[start.length - 1]
-      //   let endNode = end[end.length - 1]
-      //   this.setData({
-      //     nodeLength: endNode - startNode
-      //   })
-      // }
+      console.log(lesson)
       this.setData({
         lesson
       })

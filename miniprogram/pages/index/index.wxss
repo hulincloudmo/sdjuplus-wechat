@@ -35,6 +35,11 @@
   flex-direction: column;
 }
 
+.custom-image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
 ::-webkit-scrollbar{
   width: 0;
   height: 0;

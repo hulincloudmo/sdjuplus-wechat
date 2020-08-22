@@ -1,5 +1,5 @@
 var date = getDate()
-
+var week = ["日", "一", "二", "三", "四", "五", "六"]
 function todayCourseFilter(courseList) {
   var today = date.getDay()
   var res = []
@@ -18,11 +18,18 @@ function transformCourseNode(node) {
   return start + "-" + end
 }
 
-function hasCourseThisWeek(lesson) {
-
+function hasCourseThisWeek(lesson, thisWeek) {
+  var week = lesson.data.week.split(',')
+  for (var i = 0; i < week.length; i++) {
+    if (week[i] == thisWeek) {
+      return true
+    }
+  }
+  return false
 }
 
 module.exports = {
   todayCourseFilter: todayCourseFilter,
-  transformCourseNode: transformCourseNode
+  transformCourseNode: transformCourseNode,
+  hasCourseThisWeek: hasCourseThisWeek
 }

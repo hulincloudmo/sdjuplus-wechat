@@ -18,6 +18,9 @@ Component({
     },
     courseList: {
       type: Array
+    },
+    thisWeek: {
+      type: Number
     }
   },
 

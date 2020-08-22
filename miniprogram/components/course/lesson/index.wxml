@@ -4,14 +4,18 @@
 <!--    {{x}}-{{y}}-->
 </view>
 <view wx:else style="height: 100%" bind:longpress="showChangePanel">
-    <view wx:if="{{ lesson.isStart }}" class="startNode" style="background-color: {{ lesson.data.color }};">
-        <text style="position: absolute; top: 5rpx;left: 10rpx">{{ lesson.data.name }}</text>
-        <text style="position: absolute; top: 88rpx;left: 10rpx">{{ lesson.data.location }}</text>
-<!--        <text style="position: absolute; bottom: -100rpx">{{ lesson.data.teacher }}</text>-->
+    <view
+            wx:if="{{ lesson.isStart }}"
+            class="startNode"
+            style="background-color: {{ c.hasCourseThisWeek(lesson,thisWeek) ? 'gray' :  lesson.data.color}};border-radius: {{lesson.isStart && lesson.isEnd ? '10rpx 10rpx 10rpx 10rpx;': '10rpx 10rpx 0 0;'}}">
+        <text style="position: absolute; top: 10rpx;width: 90%;text-align: center">{{ lesson.data.name }}</text>
+        <text style="position: absolute; top: 100rpx;width: 90%;text-align: center">{{ lesson.data.location }}</text>
+        <text wx:if="{{c.hasCourseThisWeek(lesson,thisWeek)}}" style="position: absolute; top: 150rpx;left: 8rpx">(非本周)</text>
+        <text style="position: absolute; bottom: -100rpx;width: 90%;text-align: center">{{ lesson.data.teacher }}</text>
     </view>
     <view wx:else
           class="endNode"
-          style="background-color: {{ lesson.data.color }};border-radius: {{lesson.isEnd ? '0rpx 0rpx 10rpx 10rpx;' : ''}}"
+          style="background-color: {{ c.hasCourseThisWeek(lesson,thisWeek) ? 'gray' :  lesson.data.color }};border-radius: {{lesson.isEnd ? '0rpx 0rpx 10rpx 10rpx;' : ''}}"
     >
     </view>
 </view>

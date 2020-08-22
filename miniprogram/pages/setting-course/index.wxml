@@ -1,0 +1,13 @@
+<van-row>
+    <van-cell
+            title="您目前课表内的课程有："
+            icon="points"
+    />
+    <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
+        <view slot="left">选择</view>
+        <van-cell title="周一">
+
+        </van-cell>
+        <view slot="right">删除</view>
+    </van-swipe-cell>
+</van-row>
